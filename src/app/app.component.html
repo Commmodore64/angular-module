@@ -82,6 +82,7 @@
     <p>Horas trabajadas: {{ item.horas_trabajadas }}</p>
     <p>Mantenimientos: {{ item.mantenimientos }}</p>
     <p>Color: {{ item.color }}</p>
+    <button (click)="onDelete(item)">Eliminar</button>
   </div>
 
   <!-- Botón para enviar el formulario -->

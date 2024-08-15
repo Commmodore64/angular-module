@@ -14,6 +14,9 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+deleteData(arg0: any) {
+throw new Error('Method not implemented.');
+}
   selectedOption: string = 'maquinaria';
 
   stateOptions: any[] = [
@@ -81,4 +84,34 @@ export class AppComponent implements OnInit {
       // Agrega casos para otras opciones si es necesario
     }
   }
+  // Función para eliminar los datos
+  onDelete(item: any): void {
+    switch (this.selectedOption) {
+      case 'maquinaria':
+        this.dataService.deleteMaquinariaData(item.id).subscribe({
+          next: (response) => {
+            console.log('Maquinaria data deleted successfully:', response);
+            this.fetchData(); // Actualiza los datos después de eliminar
+          },
+          error: (error) => {
+            console.error('Error deleting data:', error);
+          }
+        });
+        break;
+      case 'equipo_menor':
+        this.dataService.deleteEquipoMenorData(item.id).subscribe({
+          next: (response) => {
+            console.log('Equipo Menor data deleted successfully:', response);
+            this.fetchData(); // Actualiza los datos después de eliminar
+          },
+          error: (error) => {
+            console.error('Error deleting data:', error);
+          }
+        });
+        break;
+    }
+  }
+
+  
+  
 }
