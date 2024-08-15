@@ -29,6 +29,11 @@ export class AppComponent implements OnInit {
   // Datos que se obtendrán del servicio
   data: any[] = [];
 
+  // Modelos para almacenar los datos que se van a enviar
+  maquinaria: any = {};
+  equipoMenor: any = {};
+  // Agrega modelos para otras opciones si es necesario
+
   constructor(private dataService: DataService) {}
 
   // Método que se ejecuta al iniciar el componente
@@ -55,6 +60,25 @@ export class AppComponent implements OnInit {
       default:
         this.data = []; // Limpia los datos si la opción no coincide
         break;
+    }
+  }
+
+  // Método para enviar los datos del formulario al servicio
+  onSubmit(): void {
+    switch (this.selectedOption) {
+      case 'maquinaria':
+        this.dataService.postMaquinariaData(this.maquinaria).subscribe(response => {
+          console.log('Maquinaria data posted successfully:', response);
+          // Maneja la respuesta aquí si es necesario
+        });
+        break;
+      case 'equipo_menor':
+        this.dataService.postEquipoMenorData(this.equipoMenor).subscribe(response => {
+          console.log('Equipo Menor data posted successfully:', response);
+          // Maneja la respuesta aquí si es necesario
+        });
+        break;
+      // Agrega casos para otras opciones si es necesario
     }
   }
 }

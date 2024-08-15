@@ -6,16 +6,25 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  maquinariaUrl = 'http://localhost:3000/maquinaria';
-  equipoMenorUrl = 'http://localhost:3000/equipo_menor';
+  private baseUrl = 'http://localhost:3000'; // Cambia esto a tu URL de API
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getMaquinariaData(): Observable<any> {
-    return this.http.get(this.maquinariaUrl, { headers: { Accept: 'application/json' } });
+    return this.http.get<any>(`${this.baseUrl}/maquinaria`);
+  }
+
+  postMaquinariaData(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/maquinaria`, data);
   }
 
   getEquipoMenorData(): Observable<any> {
-    return this.http.get(this.equipoMenorUrl, { headers: { Accept: 'application/json' } });
+    return this.http.get<any>(`${this.baseUrl}/equipo_menor`);
   }
+
+  postEquipoMenorData(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/equipo_menor`, data);
+  }
+
+  // Agrega métodos para otras opciones si es necesario
 }
