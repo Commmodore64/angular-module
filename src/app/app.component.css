@@ -52,3 +52,85 @@ input.p-inputtext:focus {
     outline: none; /* Quita el outline estándar */
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Añade un efecto de sombra */
 }
+
+/* Nueva clase para el contenedor con bordes redondeados y sombra */
+.card-container {
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    padding: 20px; /* Espaciado interno */
+    margin: 20px auto; /* Centrado automático con márgenes */
+    max-width: 80%; /* Ancho máximo del contenedor */
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+}
+
+/* Asegúrate de que la tabla y los campos del formulario se adapten */
+.card-container table,
+.card-container mat-form-field {
+    width: 100%; /* Ancho completo dentro del contenedor */
+    border-collapse: collapse; /* Elimina el espacio entre celdas */
+}
+
+/* Centrar el contenido dentro del contenedor */
+.center {
+    display: block;
+    margin: 0 auto; /* Centrado horizontal */
+    width: 100%; /* Ancho completo dentro del contenedor */
+}
+
+/* Ajustar el estilo de las celdas y encabezados dentro del contenedor */
+.card-container th {
+    background-color: #47a8d1; /* Color de fondo del encabezado */
+    color: #ffffff; /* Color del texto del encabezado */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    padding: 10px; /* Espaciado interno en el encabezado */
+}
+
+.card-container th:first-of-type {
+    border-top-left-radius: 8px; /* Bordes redondeados en la esquina superior izquierda */
+}
+
+.card-container th:last-of-type {
+    border-top-right-radius: 8px; /* Bordes redondeados en la esquina superior derecha */
+}
+
+.card-container td {
+    text-align: left;
+    padding: 10px; /* Espaciado interno en las celdas */
+    border-bottom: 1px solid #ddd; /* Línea divisoria entre filas */
+    background-color: #ffffff; /* Fondo blanco para las celdas */
+}
+
+.card-container tr:nth-child(even) td {
+    background-color: #f9f9f9; /* Fondo alternativo para filas pares */
+}
+
+.card-container tr:last-child td {
+    border-bottom: none; /* Elimina la línea divisoria en la última fila */
+}
+
+.card-container .filtro-tabla {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 900;
+    font-family: Georgia, serif;
+    border-color: #ffffff;
+}
+
+.card-container .filter {
+    width: 80%;
+    height: 40%;
+    opacity: 1; /* Ajusta la opacidad si es necesario */
+}
+
+.card-container .removeStyle {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}

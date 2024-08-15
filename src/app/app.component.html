@@ -13,7 +13,7 @@
 </div>
 
 <!-- Inputs para Maquinaria -->
-<div *ngIf="selectedOption === 'maquinaria'" class="card flex justify-content-center container margin-top inputs-container">
+<div *ngIf="selectedOption === 'maquinaria'" class="card-container flex justify-content-center container margin-top inputs-container">
   <p-floatLabel>
     <input pInputText id="mayor" [(ngModel)]="maquinaria.mayor" name="mayor" class="p-inputtext" required/>
     <label for="mayor">Mayor</label>
@@ -68,22 +68,43 @@
   </p-floatLabel>
 
   <!-- Muestra los datos obtenidos -->
-  <div *ngFor="let item of data">
-    <p>id: {{item.id}}</p>
-    <p>Mayor: {{ item.mayor }}</p>
-    <p>Marca: {{ item.marca }}</p>
-    <p>Modelo: {{ item.modelo }}</p>
-    <p>Tipo de máquina: {{ item.tipo_maquina }}</p>
-    <p>Serie: {{ item.serie }}</p>
-    <p>Placas: {{ item.placas }}</p>
-    <p>Combustible: {{ item.combustible }}</p>
-    <p>Placas: {{item.placas}}</p>
-    <p>QR: {{ item.qr }}</p>
-    <p>Horas trabajadas: {{ item.horas_trabajadas }}</p>
-    <p>Mantenimientos: {{ item.mantenimientos }}</p>
-    <p>Color: {{ item.color }}</p>
-    <button (click)="onDelete(item)">Eliminar</button>
-  </div>
+  <table class="center">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Mayor</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Tipo de máquina</th>
+        <th>Serie</th>
+        <th>Placas</th>
+        <th>Combustible</th>
+        <th>QR</th>
+        <th>Horas trabajadas</th>
+        <th>Mantenimientos</th>
+        <th>Color</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{item.id}}</td>
+        <td>{{ item.mayor }}</td>
+        <td>{{ item.marca }}</td>
+        <td>{{ item.modelo }}</td>
+        <td>{{ item.tipo_maquina }}</td>
+        <td>{{ item.serie }}</td>
+        <td>{{ item.placas }}</td>
+        <td>{{ item.combustible }}</td>
+        <td>{{ item.qr }}</td>
+        <td>{{ item.horas_trabajadas }}</td>
+        <td>{{ item.mantenimientos }}</td>
+        <td>{{ item.color }}</td>
+        <td><button (click)="onDelete(item)">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
 
   <!-- Botón para enviar el formulario -->
   <button type="button" (click)="onSubmit()">Enviar</button>
