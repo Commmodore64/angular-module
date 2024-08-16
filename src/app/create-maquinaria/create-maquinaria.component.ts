@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { NgIf, NgFor } from '@angular/common';
-import { DataService } from './data.service';
 import { ButtonModule } from 'primeng/button';
+import { NgIf, NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { DataService } from '../data.service';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-create-maquinaria',
   standalone: true,
-  imports: [RouterOutlet, SelectButtonModule, FormsModule, FloatLabelModule, NgIf, NgFor, ButtonModule, RouterOutlet, RouterLink],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  imports: [FloatLabelModule, ButtonModule, NgIf, NgFor, FormsModule, RouterOutlet],
+  templateUrl: './create-maquinaria.component.html',
+  styleUrl: './create-maquinaria.component.css'
 })
-export class AppComponent implements OnInit {
+export class CreateMaquinariaComponent {
   selectedOption: string = 'maquinaria';
   value: string = '';
-  data: any[] = []; 
+  data: any[] = [];
 
   maquinaria: any = {};
   equipoMenor: any = {};

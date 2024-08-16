@@ -4,17 +4,17 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { FormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { NgIf, NgFor } from '@angular/common';
-import { DataService } from './data.service';
+import { DataService } from '../data.service';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-principal',
   standalone: true,
   imports: [RouterOutlet, SelectButtonModule, FormsModule, FloatLabelModule, NgIf, NgFor, ButtonModule, RouterOutlet, RouterLink],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  templateUrl: './principal.component.html',
+  styleUrl: './principal.component.css'
 })
-export class AppComponent implements OnInit {
+export class PrincipalComponent {
   selectedOption: string = 'maquinaria';
   value: string = '';
   data: any[] = []; 

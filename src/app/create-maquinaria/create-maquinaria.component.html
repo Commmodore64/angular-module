@@ -1,0 +1,62 @@
+<h1>Agregar Maquinaria</h1>
+
+<div class="card-container flex justify-content-center container margin-top inputs-container">
+    <p-floatLabel>
+    <input pInputText id="mayor" [(ngModel)]="maquinaria.mayor" name="mayor" class="p-inputtext" required/>
+    <label for="mayor">Mayor</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="menor" [(ngModel)]="maquinaria.menor" name="menor" class="p-inputtext" required/>
+    <label for="menor">Menor</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="tipo_maquina" [(ngModel)]="maquinaria.tipo_maquina" name="tipo_maquina" class="p-inputtext" required/>
+    <label for="tipo_maquina">Tipo Maquina</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="marca" [(ngModel)]="maquinaria.marca" name="marca" class="p-inputtext" required/>
+    <label for="marca">Marca</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="modelo" [(ngModel)]="maquinaria.modelo" name="modelo" class="p-inputtext" required/>
+    <label for="modelo">Modelo</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="year" [(ngModel)]="maquinaria.year" name="year" class="p-inputtext" required/>
+    <label for="year">Año</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="serie" [(ngModel)]="maquinaria.serie" name="serie" class="p-inputtext" required/>
+    <label for="serie">Serie</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="combustible" [(ngModel)]="maquinaria.combustible" name="combustible" class="p-inputtext" required/>
+    <label for="combustible">Combustible</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="placas" [(ngModel)]="maquinaria.placas" name="placas" class="p-inputtext" required/>
+    <label for="placas">Placas</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="qr" [(ngModel)]="maquinaria.qr" name="qr" class="p-inputtext" required/>
+    <label for="qr">Codigo QR</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="horas_trabajadas" [(ngModel)]="maquinaria.horas_trabajadas" name="horas_trabajadas" class="p-inputtext" required/>
+    <label for="horas_trabajadas">Horas Trabajadas</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="mantenimientos" [(ngModel)]="maquinaria.mantenimientos" name="mantenimientos" class="p-inputtext" required/>
+    <label for="mantenimientos">Mantenimientos</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="color" [(ngModel)]="maquinaria.color" name="color" class="p-inputtext" required/>
+    <label for="color">Color</label>
+  </p-floatLabel>
+
+</div>
+<div class="card flex justify-content-center container margin-top">
+    <p-button type="button" (click)="onSubmit()">Enviar</p-button>
+</div>
+
+
