@@ -5,7 +5,7 @@ import { NgIf, NgFor } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data.service';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-create-maquinaria',
@@ -39,7 +39,7 @@ export class CreateMaquinariaComponent {
     { label: 'Insumos Consumibles', value: 'insumos_consumibles' },
   ];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchData();
@@ -128,6 +128,7 @@ export class CreateMaquinariaComponent {
         break;
     }
   }
+
   openModal(): void {
     const modal = document.getElementById('manualModal');
     if (modal) {
@@ -145,5 +146,6 @@ export class CreateMaquinariaComponent {
   confirmSubmit(): void {
     this.closeModal();
     this.onSubmit(); // Llama al método para enviar los datos
+    this.router.navigate(['/']); // Redirige a la página de inicio
   }
 }
