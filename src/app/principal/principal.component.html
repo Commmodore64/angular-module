@@ -119,38 +119,36 @@
     </tbody>
   </table>
 </div>
-<!--
-<div *ngIf="selectedOption === 'material_construccion'" class="card flex justify-content-center container margin-top inputs-container">
-  <p-floatLabel>
-    <input pInputText id="familia_mc" [(ngModel)]="materialConstruccion.familia" class="p-inputtext"/>
-    <label for="familia_mc">Familia</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="linea_mc" [(ngModel)]="materialConstruccion.linea" class="p-inputtext"/>
-    <label for="linea_mc">Linea</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="materiales_mc" [(ngModel)]="materialConstruccion.materiales" class="p-inputtext"/>
-    <label for="materiales_mc">Materiales</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="descripcion_mc" [(ngModel)]="materialConstruccion.descripcion" class="p-inputtext"/>
-    <label for="descripcion_mc">Descripción</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="unidad_medida_mc" [(ngModel)]="materialConstruccion.unidad_medida" class="p-inputtext"/>
-    <label for="unidad_medida_mc">Unidad de Medida</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="costo_unitario_mc" [(ngModel)]="materialConstruccion.costo_unitario" class="p-inputtext"/>
-    <label for="costo_unitario_mc">Costo Unitario</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="cantidad_mc" [(ngModel)]="materialConstruccion.cantidad" class="p-inputtext"/>
-    <label for="cantidad_mc">Cantidad</label>
-  </p-floatLabel>
-</div>
 
+<div *ngIf="selectedOption === 'material_construccion'" class="card-container flex justify-content-center container margin-top inputs-container">
+  <table class="center">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Familia</th>
+        <th>Linea</th>
+        <th>Materiales</th>
+        <th>Descripción</th>
+        <th>Unidad Medida</th>
+        <th>Cantidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{item.id}}</td>
+        <td>{{ item.familia }}</td>
+        <td>{{ item.linea }}</td>
+        <td>{{ item.materiales }}</td>
+        <td>{{ item.descripcion }}</td>
+        <td>{{ item.unidad_medida }}</td>
+        <td>{{ item.cantidad }}</td>
+        <td><button (click)="onDelete(item)">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--
 <div *ngIf="selectedOption === 'insumos_consumibles'" class="card flex justify-content-center container margin-top inputs-container">
   <p-floatLabel>
     <input pInputText id="material_ic" [(ngModel)]="insumosConsumibles.material" class="p-inputtext"/>

@@ -46,6 +46,17 @@ export class DataService {
   deleteHerramientaData(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/herramienta/${id}`);
   }
+  // Material Construcción
+  getMaterialConstruccionData(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/material_construccion`);
+  }
+
+  postMaterialConstruccionData(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/material_construccion`, data);
+  }
+  deleteMaterialConstruccionData(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/material_construccion/${id}`);
+  }
   
 
   // Agrega métodos para otras opciones si es necesario
