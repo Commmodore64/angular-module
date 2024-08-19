@@ -58,7 +58,7 @@ input.p-inputtext:focus {
     background-color: #ffffff; /* Fondo blanco */
     border-radius: 12px; /* Bordes redondeados */
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
-    padding: 20px; /* Espaciado interno */
+    padding: 40px; /* Espaciado interno */
     margin: 20px auto; /* Centrado automático con márgenes */
     max-width: 80%; /* Ancho máximo del contenedor */
     box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
@@ -228,3 +228,69 @@ input.p-inputtext:focus {
     cursor: pointer;
 }
 
+/* Modal */
+
+/* Estilo general para el modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro */
+}
+
+/* Estilo del contenido del modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilo para el botón de cerrar */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Botones del modal */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.cancel-btn, .confirm-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.cancel-btn {
+    background-color: #aaa;
+    color: white;
+    border: none;
+}
+
+.confirm-btn {
+    background-color: #3085D6;
+    color: white;
+    border: none;
+}

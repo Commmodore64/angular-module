@@ -53,51 +53,44 @@
 </div>
 
 <!-- Inputs para Equipo Menor -->
-<div *ngIf="selectedOption === 'equipo_menor'" class="card flex justify-content-center container margin-top inputs-container">
-  <p-floatLabel>
-    <input pInputText id="tipo_herramienta" [(ngModel)]="equipoMenor.tipo_herramienta" class="p-inputtext"/>
-    <label for="tipo_herramienta">Tipo Herramienta</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="marca_em" [(ngModel)]="equipoMenor.marca" class="p-inputtext"/>
-    <label for="marca_em">Marca</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="modelo_em" [(ngModel)]="equipoMenor.modelo" class="p-inputtext"/>
-    <label for="modelo_em">Modelo</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="year_em" [(ngModel)]="equipoMenor.year" class="p-inputtext"/>
-    <label for="year_em">Año</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="serie_em" [(ngModel)]="equipoMenor.serie" class="p-inputtext"/>
-    <label for="serie_em">Serie</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="combustible_em" [(ngModel)]="equipoMenor.combustible" class="p-inputtext"/>
-    <label for="combustible_em">Combustible</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="placas_em" [(ngModel)]="equipoMenor.placas" class="p-inputtext"/>
-    <label for="placas_em">Placas</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="qr_em" [(ngModel)]="equipoMenor.qr" class="p-inputtext"/>
-    <label for="qr_em">Codigo QR</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="horas_trabajadas_em" [(ngModel)]="equipoMenor.horas_trabajadas" class="p-inputtext"/>
-    <label for="horas_trabajadas_em">Horas Trabajadas</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="mantenimientos_em" [(ngModel)]="equipoMenor.mantenimientos" class="p-inputtext"/>
-    <label for="mantenimientos_em">Mantenimientos</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="color_em" [(ngModel)]="equipoMenor.color" class="p-inputtext"/>
-    <label for="color_em">Color</label>
-  </p-floatLabel>
+<div *ngIf="selectedOption === 'equipo_menor'" class="card-container flex justify-content-center container margin-top inputs-container">
+    <!-- Muestra los datos obtenidos -->
+    <table class="center">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Mayor</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Tipo de máquina</th>
+          <th>Serie</th>
+          <th>Placas</th>
+          <th>Combustible</th>
+          <th>QR</th>
+          <th>Horas trabajadas</th>
+          <th>Mantenimientos</th>
+          <th>Color</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td>{{item.id}}</td>
+          <td>{{ item.mayor }}</td>
+          <td>{{ item.marca }}</td>
+          <td>{{ item.modelo }}</td>
+          <td>{{ item.tipo_maquina }}</td>
+          <td>{{ item.serie }}</td>
+          <td>{{ item.placas }}</td>
+          <td>{{ item.combustible }}</td>
+          <td>{{ item.qr }}</td>
+          <td>{{ item.horas_trabajadas }}</td>
+          <td>{{ item.mantenimientos }}</td>
+          <td>{{ item.color }}</td>
+          <td><button (click)="onDelete(item)">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
 </div>
 
 <!-- Inputs para Herramienta
@@ -176,7 +169,9 @@
 
 <!-- Botón de Enviar -->
 <div class="card flex justify-content-center container margin-top">
-    <p-button class="btn btn-primary" [routerLink]="['/create-maquinaria']">Agregar Maquinaria</p-button>
+  <p-button class="btn btn-primary" [routerLink]="['/create-' + selectedOption]">
+    Agregar {{ selectedOption }}
+  </p-button>  
 </div>
 
 <router-outlet></router-outlet>

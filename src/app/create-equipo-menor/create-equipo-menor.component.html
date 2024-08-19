@@ -1,1 +1,65 @@
-<p>create-equipo-menor works!</p>
+<h1>Agregar Equipo Menor</h1>
+
+<div class="card-container flex justify-content-center container margin-top inputs-container">
+  <p-floatLabel>
+    <input pInputText id="tipo_herramienta" [(ngModel)]="equipoMenor.tipo_herramienta" name="tipo_herramienta" class="p-inputtext" required/>
+    <label for="tipo_herramienta">Tipo Herramienta</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="marca" [(ngModel)]="equipoMenor.marca" name="marca" class="p-inputtext" required/>
+    <label for="marca">Marca</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="modelo" [(ngModel)]="equipoMenor.modelo" name="modelo" class="p-inputtext" required/>
+    <label for="modelo">Modelo</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="year" [(ngModel)]="equipoMenor.year" name="year" class="p-inputtext" required/>
+    <label for="year">Año</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="serie" [(ngModel)]="equipoMenor.serie" name="serie" class="p-inputtext" required/>
+    <label for="serie">Serie</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="combustible" [(ngModel)]="equipoMenor.combustible" name="combustible" class="p-inputtext" required/>
+    <label for="combustible">Combustible</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="placas" [(ngModel)]="equipoMenor.placas" name="placas" class="p-inputtext" required/>
+    <label for="placas">Placas</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="qr" [(ngModel)]="equipoMenor.qr" name="qr" class="p-inputtext" required/>
+    <label for="qr">Codigo QR</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="horas_trabajadas" [(ngModel)]="equipoMenor.horas_trabajadas" name="horas_trabajadas" class="p-inputtext" required/>
+    <label for="horas_trabajadas">Horas Trabajadas</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="mantenimientos" [(ngModel)]="equipoMenor.mantenimientos" name="mantenimientos" class="p-inputtext" required/>
+    <label for="mantenimientos">Mantenimientos</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="color" [(ngModel)]="equipoMenor.color" name="color" class="p-inputtext" required/>
+    <label for="color">Color</label>
+  </p-floatLabel>
+
+</div>
+<div class="card flex justify-content-center container margin-top">
+  <p-button class="open-modal-btn" (click)="openModal()">Agregar Equipo Menor</p-button>
+</div>
+
+<!-- Modal manual -->
+<div id="manualModal" class="modal">
+  <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Confirmación</h2>
+      <p>¿Esta seguro de que desea agregar esta Equipo Menor?</p>
+      <div class="modal-buttons">
+          <button class="confirm-btn" (click)="confirmSubmit()">Confirmar</button>
+          <button class="cancel-btn" (click)="closeModal()">Cancelar</button>
+      </div>
+  </div>
+</div>
