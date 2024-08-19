@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { ButtonModule } from 'primeng/button';
 import { NgIf, NgFor } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data.service';
 import { RouterOutlet } from '@angular/router';
@@ -9,9 +10,17 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-create-maquinaria',
   standalone: true,
-  imports: [FloatLabelModule, ButtonModule, NgIf, NgFor, FormsModule, RouterOutlet],
+  imports: [
+    FloatLabelModule,
+    ButtonModule,
+    NgIf,
+    NgFor,
+    FormsModule,
+    RouterOutlet,
+    InputTextModule,
+  ],
   templateUrl: './create-maquinaria.component.html',
-  styleUrl: './create-maquinaria.component.css'
+  styleUrl: './create-maquinaria.component.css',
 })
 export class CreateMaquinariaComponent {
   selectedOption: string = 'maquinaria';
@@ -27,7 +36,7 @@ export class CreateMaquinariaComponent {
     { label: 'Equipo Menor', value: 'equipo_menor' },
     { label: 'Herramienta', value: 'herramienta' },
     { label: 'Material Construcción', value: 'material_construccion' },
-    { label: 'Insumos Consumibles', value: 'insumos_consumibles' }
+    { label: 'Insumos Consumibles', value: 'insumos_consumibles' },
   ];
 
   constructor(private dataService: DataService) {}
@@ -46,7 +55,7 @@ export class CreateMaquinariaComponent {
           },
           error: (error) => {
             console.error('Error fetching data:', error);
-          }
+          },
         });
         break;
       case 'equipo_menor':
@@ -57,7 +66,7 @@ export class CreateMaquinariaComponent {
           },
           error: (error) => {
             console.error('Error fetching data:', error);
-          }
+          },
         });
         break;
       default:
@@ -76,7 +85,7 @@ export class CreateMaquinariaComponent {
           },
           error: (error) => {
             console.error('Error posting data:', error);
-          }
+          },
         });
         break;
       case 'equipo_menor':
@@ -87,7 +96,7 @@ export class CreateMaquinariaComponent {
           },
           error: (error) => {
             console.error('Error posting data:', error);
-          }
+          },
         });
         break;
     }
@@ -103,7 +112,7 @@ export class CreateMaquinariaComponent {
           },
           error: (error) => {
             console.error('Error deleting data:', error);
-          }
+          },
         });
         break;
       case 'equipo_menor':
@@ -114,9 +123,27 @@ export class CreateMaquinariaComponent {
           },
           error: (error) => {
             console.error('Error deleting data:', error);
-          }
+          },
         });
         break;
     }
+  }
+  openModal(): void {
+    const modal = document.getElementById('manualModal');
+    if (modal) {
+      modal.style.display = 'block';
+    }
+  }
+
+  closeModal(): void {
+    const modal = document.getElementById('manualModal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  }
+
+  confirmSubmit(): void {
+    this.closeModal();
+    this.onSubmit(); // Llama al método para enviar los datos
   }
 }

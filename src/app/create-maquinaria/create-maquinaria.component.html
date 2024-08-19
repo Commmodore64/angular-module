@@ -56,7 +56,18 @@
 
 </div>
 <div class="card flex justify-content-center container margin-top">
-    <p-button type="button" (click)="onSubmit()">Enviar</p-button>
+  <p-button class="open-modal-btn" (click)="openModal()">Agregar Maquinaria</p-button>
 </div>
 
-
+<!-- Modal manual -->
+<div id="manualModal" class="modal">
+  <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Confirmación</h2>
+      <p>¿Esta seguro de que desea agregar esta maquinaria?</p>
+      <div class="modal-buttons">
+          <button class="confirm-btn" (click)="confirmSubmit()">Confirmar</button>
+          <button class="cancel-btn" (click)="closeModal()">Cancelar</button>
+      </div>
+  </div>
+</div>
