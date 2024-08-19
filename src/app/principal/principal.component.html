@@ -93,26 +93,33 @@
     </table>
 </div>
 
-<!-- Inputs para Herramienta
-<div *ngIf="selectedOption === 'herramienta'" class="card flex justify-content-center container margin-top inputs-container">
-  <p-floatLabel>
-    <input pInputText id="descripcion_h" [(ngModel)]="herramienta.descripcion" class="p-inputtext"/>
-    <label for="descripcion_h">Descripción</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="unidad_h" [(ngModel)]="herramienta.unidad" class="p-inputtext"/>
-    <label for="unidad_h">Unidad</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="no_eco_h" [(ngModel)]="herramienta.no_eco" class="p-inputtext"/>
-    <label for="no_eco_h">No Eco</label>
-  </p-floatLabel>
-  <p-floatLabel>
-    <input pInputText id="qr_h" [(ngModel)]="herramienta.qr" class="p-inputtext"/>
-    <label for="qr_h">Codigo QR</label>
-  </p-floatLabel>
+ <!-- Inputs para Herramienta -->
+ <div *ngIf="selectedOption === 'herramienta'" class="card-container flex justify-content-center container margin-top inputs-container">
+  <!-- Muestra los datos obtenidos -->
+  <table class="center">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Unidad</th>
+        <th>No Eco</th>
+        <th>QR</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{item.id}}</td>
+        <td>{{ item.descripcion }}</td>
+        <td>{{ item.unidad }}</td>
+        <td>{{ item.no_eco }}</td>
+        <td>{{ item.qr }}</td>
+        <td><button (click)="onDelete(item)">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
+<!--
 <div *ngIf="selectedOption === 'material_construccion'" class="card flex justify-content-center container margin-top inputs-container">
   <p-floatLabel>
     <input pInputText id="familia_mc" [(ngModel)]="materialConstruccion.familia" class="p-inputtext"/>

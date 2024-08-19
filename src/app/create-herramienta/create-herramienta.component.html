@@ -1,0 +1,36 @@
+<h1>Agregar Herramienta</h1>
+
+<div class="card-container flex justify-content-center container margin-top inputs-container">
+    <p-floatLabel>
+    <input pInputText id="descripcion" [(ngModel)]="herramienta.descripcion" name="descripcion" class="p-inputtext" required/>
+    <label for="descripcion">Descripción</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="unidad" [(ngModel)]="herramienta.unidad" name="unidad" class="p-inputtext" required/>
+    <label for="unidad">Unidad</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="no_eco" [(ngModel)]="herramienta.no_eco" name="no_eco" class="p-inputtext" required/>
+    <label for="no_eco">No Eco</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="qr" [(ngModel)]="herramienta.qr" name="qr" class="p-inputtext" required/>
+    <label for="qr">QR</label>
+  </p-floatLabel>
+</div>
+<div class="card flex justify-content-center container margin-top">
+  <p-button class="open-modal-btn" (click)="openModal()">Agregar Herramienta</p-button>
+</div>
+
+<!-- Modal manual -->
+<div id="manualModal" class="modal">
+  <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Confirmación</h2>
+      <p>¿Esta seguro de que desea agregar esta herramienta?</p>
+      <div class="modal-buttons">
+          <button class="confirm-btn" (click)="confirmSubmit()">Confirmar</button>
+          <button class="cancel-btn" (click)="closeModal()">Cancelar</button>
+      </div>
+  </div>
+</div>

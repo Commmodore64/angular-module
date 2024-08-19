@@ -61,6 +61,17 @@ export class AppComponent implements OnInit {
           }
         });
         break;
+      case 'herramienta':
+        this.dataService.getHerramientaData().subscribe({
+          next: (data) => {
+            console.log('Herramienta data fetched:', data);
+            this.data = data;
+          },
+          error: (error) => {
+            console.error('Error fetching data:', error);
+          }
+        });
+        break;
       default:
         this.data = [];
         break;
@@ -91,6 +102,17 @@ export class AppComponent implements OnInit {
           }
         });
         break;
+      case 'herramienta':
+        this.dataService.postHerramientaData(this.equipoMenor).subscribe({
+          next: (response) => {
+            console.log('Herramienta data posted successfully:', response);
+            this.fetchData();
+          },
+          error: (error) => {
+            console.error('Error posting data:', error);
+          }
+        });
+        break;
     }
   }
 
@@ -111,6 +133,17 @@ export class AppComponent implements OnInit {
         this.dataService.deleteEquipoMenorData(item.id).subscribe({
           next: (response) => {
             console.log('Equipo Menor data deleted successfully:', response);
+            this.fetchData();
+          },
+          error: (error) => {
+            console.error('Error deleting data:', error);
+          }
+        });
+        break;
+      case 'herramienta':
+        this.dataService.deleteHerramientaData(item.id).subscribe({
+          next: (response) => {
+            console.log('Herramienta data deleted successfully:', response);
             this.fetchData();
           },
           error: (error) => {

@@ -1,26 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { NgIf, NgFor } from '@angular/common';
-import { DataService } from '../data.service';
 import { ButtonModule } from 'primeng/button';
+import { NgIf, NgFor } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { DataService } from '../data.service';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-principal',
+  selector: 'app-create-herramienta',
   standalone: true,
-  imports: [RouterOutlet, SelectButtonModule, FormsModule, FloatLabelModule, NgIf, NgFor, ButtonModule, RouterOutlet, RouterLink],
-  templateUrl: './principal.component.html',
-  styleUrl: './principal.component.css'
+  imports: [
+    FloatLabelModule,
+    ButtonModule,
+    NgIf,
+    NgFor,
+    FormsModule,
+    RouterOutlet,
+    InputTextModule,
+  ],
+  templateUrl: './create-herramienta.component.html',
+  styleUrl: './create-herramienta.component.css',
 })
-export class PrincipalComponent {
-  selectedOption: string = 'maquinaria';
+export class CreateHerramientaComponent {
+  selectedOption: string = 'herramienta';
   value: string = '';
-  data: any[] = []; 
+  data: any[] = [];
 
   maquinaria: any = {};
   equipoMenor: any = {};
+  herramienta: any = {};
   // Agrega modelos para otras opciones si es necesario
 
   stateOptions: any[] = [
@@ -28,10 +37,10 @@ export class PrincipalComponent {
     { label: 'Equipo Menor', value: 'equipo_menor' },
     { label: 'Herramienta', value: 'herramienta' },
     { label: 'Material Construcción', value: 'material_construccion' },
-    { label: 'Insumos Consumibles', value: 'insumos_consumibles' }
+    { label: 'Insumos Consumibles', value: 'insumos_consumibles' },
   ];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchData();
@@ -47,7 +56,7 @@ export class PrincipalComponent {
           },
           error: (error) => {
             console.error('Error fetching data:', error);
-          }
+          },
         });
         break;
       case 'equipo_menor':
@@ -58,7 +67,7 @@ export class PrincipalComponent {
           },
           error: (error) => {
             console.error('Error fetching data:', error);
-          }
+          },
         });
         break;
       case 'herramienta':
@@ -69,7 +78,7 @@ export class PrincipalComponent {
           },
           error: (error) => {
             console.error('Error fetching data:', error);
-          }
+          },
         });
         break;
       default:
@@ -88,7 +97,7 @@ export class PrincipalComponent {
           },
           error: (error) => {
             console.error('Error posting data:', error);
-          }
+          },
         });
         break;
       case 'equipo_menor':
@@ -99,7 +108,18 @@ export class PrincipalComponent {
           },
           error: (error) => {
             console.error('Error posting data:', error);
-          }
+          },
+        });
+        break;
+      case 'herramienta':
+        this.dataService.postHerramientaData(this.equipoMenor).subscribe({
+          next: (response) => {
+            console.log('Herramienta data posted successfully:', response);
+            this.fetchData();
+          },
+          error: (error) => {
+            console.error('Error posting data:', error);
+          },
         });
         break;
     }
@@ -115,7 +135,7 @@ export class PrincipalComponent {
           },
           error: (error) => {
             console.error('Error deleting data:', error);
-          }
+          },
         });
         break;
       case 'equipo_menor':
@@ -126,9 +146,40 @@ export class PrincipalComponent {
           },
           error: (error) => {
             console.error('Error deleting data:', error);
-          }
+          },
+        });
+        break;
+      case 'herramienta':
+        this.dataService.deleteHerramientaData(item.id).subscribe({
+          next: (response) => {
+            console.log('Herramienta data deleted successfully:', response);
+            this.fetchData();
+          },
+          error: (error) => {
+            console.error('Error deleting data:', error);
+          },
         });
         break;
     }
+  }
+
+  openModal(): void {
+    const modal = document.getElementById('manualModal');
+    if (modal) {
+      modal.style.display = 'block';
+    }
+  }
+
+  closeModal(): void {
+    const modal = document.getElementById('manualModal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  }
+
+  confirmSubmit(): void {
+    this.closeModal();
+    this.onSubmit(); // Llama al método para enviar los datos
+    this.router.navigate(['/']); // Redirige a la página de inicio
   }
 }

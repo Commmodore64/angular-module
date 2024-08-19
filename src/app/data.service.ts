@@ -10,6 +10,7 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
+  // Maquinaria
   getMaquinariaData(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/maquinaria`);
   }
@@ -23,6 +24,7 @@ export class DataService {
     return this.http.post<any>(`${this.baseUrl}/maquinaria`, data);
   }
 
+  // Equipo Menor
   getEquipoMenorData(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/equipo_menor`);
   }
@@ -32,6 +34,17 @@ export class DataService {
   }
   deleteEquipoMenorData(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/equipo_menor/${id}`);
+  }
+  // Herramienta
+  getHerramientaData(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/herramienta`);
+  }
+
+  postHerramientaData(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/herramienta`, data);
+  }
+  deleteHerramientaData(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/herramienta/${id}`);
   }
   
 
