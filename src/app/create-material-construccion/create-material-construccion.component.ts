@@ -43,7 +43,7 @@ export class CreateMaterialConstruccionComponent {
 
   constructor(private dataService: DataService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.fetchData();
   }
 
