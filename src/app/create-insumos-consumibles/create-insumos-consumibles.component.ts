@@ -1,28 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { NgIf, NgFor } from '@angular/common';
-import { DataService } from './data.service';
 import { ButtonModule } from 'primeng/button';
+import { NgIf, NgFor } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { DataService } from '../data.service';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-create-insumos-consumibles',
   standalone: true,
-  imports: [RouterOutlet, SelectButtonModule, FormsModule, FloatLabelModule, NgIf, NgFor, ButtonModule, RouterOutlet, RouterLink],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  imports: [
+    FloatLabelModule,
+    ButtonModule,
+    NgIf,
+    NgFor,
+    FormsModule,
+    RouterOutlet,
+    InputTextModule,
+  ],
+  templateUrl: './create-insumos-consumibles.component.html',
+  styleUrl: './create-insumos-consumibles.component.css',
 })
-export class AppComponent implements OnInit {
-  selectedOption: string = 'maquinaria';
+export class CreateInsumosConsumiblesComponent {
+  selectedOption: string = 'insumos_consumibles';
   value: string = '';
-  data: any[] = []; 
+  data: any[] = [];
 
   maquinaria: any = {};
   equipoMenor: any = {};
   herramienta: any = {};
   material_construccion: any = {};
+  insumos_consumibles: any = {};
   // Agrega modelos para otras opciones si es necesario
 
   stateOptions: any[] = [
@@ -30,10 +39,10 @@ export class AppComponent implements OnInit {
     { label: 'Equipo Menor', value: 'equipo_menor' },
     { label: 'Herramienta', value: 'herramienta' },
     { label: 'Material Construcción', value: 'material_construccion' },
-    { label: 'Insumos Consumibles', value: 'insumos_consumibles' }
+    { label: 'Insumos Consumibles', value: 'insumos_consumibles' },
   ];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchData();
@@ -49,7 +58,7 @@ export class AppComponent implements OnInit {
           },
           error: (error) => {
             console.error('Error fetching data:', error);
-          }
+          },
         });
         break;
       case 'equipo_menor':
@@ -60,7 +69,7 @@ export class AppComponent implements OnInit {
           },
           error: (error) => {
             console.error('Error fetching data:', error);
-          }
+          },
         });
         break;
       case 'herramienta':
@@ -71,18 +80,18 @@ export class AppComponent implements OnInit {
           },
           error: (error) => {
             console.error('Error fetching data:', error);
-          }
+          },
         });
         break;
       case 'material_construccion':
         this.dataService.getMaterialConstruccionData().subscribe({
           next: (data) => {
-            console.log('Material Construccion data fetched:', data);
+            console.log('Material Construcción data fetched:', data);
             this.data = data;
           },
           error: (error) => {
             console.error('Error fetching data:', error);
-          }
+          },
         });
         break;
       case 'insumos_consumibles':
@@ -93,7 +102,7 @@ export class AppComponent implements OnInit {
           },
           error: (error) => {
             console.error('Error fetching data:', error);
-          }
+          },
         });
         break;
       default:
@@ -112,7 +121,7 @@ export class AppComponent implements OnInit {
           },
           error: (error) => {
             console.error('Error posting data:', error);
-          }
+          },
         });
         break;
       case 'equipo_menor':
@@ -123,7 +132,7 @@ export class AppComponent implements OnInit {
           },
           error: (error) => {
             console.error('Error posting data:', error);
-          }
+          },
         });
         break;
       case 'herramienta':
@@ -134,18 +143,29 @@ export class AppComponent implements OnInit {
           },
           error: (error) => {
             console.error('Error posting data:', error);
-          }
+          },
         });
         break;
       case 'material_construccion':
         this.dataService.postMaterialConstruccionData(this.material_construccion).subscribe({
           next: (response) => {
-            console.log('Material Construccion data posted successfully:', response);
+            console.log('Material Construcción data posted successfully:', response);
             this.fetchData();
           },
           error: (error) => {
             console.error('Error posting data:', error);
-          }
+          },
+        });
+        break;
+      case 'insumos_consumibles':
+        this.dataService.postInsumosConsumiblesData(this.insumos_consumibles).subscribe({
+          next: (response) => {
+            console.log('Insumos Consumibles data posted successfully:', response);
+            this.fetchData();
+          },
+          error: (error) => {
+            console.error('Error posting data:', error);
+          },
         });
         break;
     }
@@ -161,7 +181,7 @@ export class AppComponent implements OnInit {
           },
           error: (error) => {
             console.error('Error deleting data:', error);
-          }
+          },
         });
         break;
       case 'equipo_menor':
@@ -172,7 +192,7 @@ export class AppComponent implements OnInit {
           },
           error: (error) => {
             console.error('Error deleting data:', error);
-          }
+          },
         });
         break;
       case 'herramienta':
@@ -183,18 +203,18 @@ export class AppComponent implements OnInit {
           },
           error: (error) => {
             console.error('Error deleting data:', error);
-          }
+          },
         });
         break;
       case 'material_construccion':
         this.dataService.deleteMaterialConstruccionData(item.id).subscribe({
           next: (response) => {
-            console.log('Material Construccion data deleted successfully:', response);
+            console.log('Material Construcción data deleted successfully:', response);
             this.fetchData();
           },
           error: (error) => {
             console.error('Error deleting data:', error);
-          }
+          },
         });
         break;
       case 'insumos_consumibles':
@@ -205,9 +225,29 @@ export class AppComponent implements OnInit {
           },
           error: (error) => {
             console.error('Error deleting data:', error);
-          }
+          },
         });
         break;
     }
+  }
+
+  openModal(): void {
+    const modal = document.getElementById('manualModal');
+    if (modal) {
+      modal.style.display = 'block';
+    }
+  }
+
+  closeModal(): void {
+    const modal = document.getElementById('manualModal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  }
+
+  confirmSubmit(): void {
+    this.closeModal();
+    this.onSubmit(); // Llama al método para enviar los datos
+    this.router.navigate(['/']); // Redirige a la página de inicio
   }
 }

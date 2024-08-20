@@ -23,6 +23,7 @@ export class PrincipalComponent {
   equipoMenor: any = {};
   herramienta: any = {};
   material_construccion: any = {};
+  insumos_consumibles: any = {};
   // Agrega modelos para otras opciones si es necesario
 
   stateOptions: any[] = [
@@ -85,6 +86,17 @@ export class PrincipalComponent {
           }
         });
         break;
+      case 'insumos_consumibles':
+        this.dataService.getInsumosConsumiblesData().subscribe({
+          next: (data) => {
+            console.log('Insumos Consumibles data fetched:', data);
+            this.data = data;
+          },
+          error: (error) => {
+            console.error('Error fetching data:', error);
+          }
+        });
+        break;
       default:
         this.data = [];
         break;
@@ -137,6 +149,17 @@ export class PrincipalComponent {
             }
           });
           break;
+        case 'insumos_consumibles':
+          this.dataService.postInsumosConsumiblesData(this.insumos_consumibles).subscribe({
+            next: (response) => {
+              console.log('Insumos Consumibles data posted successfully:', response);
+              this.fetchData();
+            },
+            error: (error) => {
+              console.error('Error posting data:', error);
+            }
+          });
+          break;
     }
   }
 
@@ -179,6 +202,17 @@ export class PrincipalComponent {
         this.dataService.deleteMaterialConstruccionData(item.id).subscribe({
           next: (response) => {
             console.log('Material Construccion data deleted successfully:', response);
+            this.fetchData();
+          },
+          error: (error) => {
+            console.error('Error deleting data:', error);
+          }
+        });
+        break;
+      case 'insumos_consumibles':
+        this.dataService.deleteInsumosConsumiblesData(item.id).subscribe({
+          next: (response) => {
+            console.log('Insumos Consumibles data deleted successfully:', response);
             this.fetchData();
           },
           error: (error) => {

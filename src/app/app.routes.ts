@@ -4,6 +4,7 @@ import { CreateMaquinariaComponent } from './create-maquinaria/create-maquinaria
 import { CreateEquipoMenorComponent } from './create-equipo-menor/create-equipo-menor.component';
 import { CreateHerramientaComponent } from './create-herramienta/create-herramienta.component';
 import { CreateMaterialConstruccionComponent } from './create-material-construccion/create-material-construccion.component';
+import { CreateInsumosConsumiblesComponent } from './create-insumos-consumibles/create-insumos-consumibles.component';
 import { PrincipalComponent } from './principal/principal.component';
 
 export const routes: Routes = [
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'create-equipo_menor', component: CreateEquipoMenorComponent },
   { path: 'create-herramienta', component: CreateHerramientaComponent },
   { path: 'create-material_construccion', component: CreateMaterialConstruccionComponent },
+  { path: 'create-insumos_consumibles', component: CreateInsumosConsumiblesComponent },
 ];
 
 @NgModule({

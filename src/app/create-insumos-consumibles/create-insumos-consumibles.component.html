@@ -1,0 +1,48 @@
+<h1>Agregar Maquinaria</h1>
+
+<div class="card-container flex justify-content-center container margin-top inputs-container">
+    <p-floatLabel>
+    <input pInputText id="familia" [(ngModel)]="insumos_consumibles.familia" name="familia" class="p-inputtext" required/>
+    <label for="familia">Familia</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="linea" [(ngModel)]="insumos_consumibles.linea" name="linea" class="p-inputtext" required/>
+    <label for="linea">Linea</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="materiales" [(ngModel)]="insumos_consumibles.materiales" name="materiales" class="p-inputtext" required/>
+    <label for="materiales">Materiales</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="marca" [(ngModel)]="insumos_consumibles.marca" name="marca" class="p-inputtext" required/>
+    <label for="marca">Marca</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="descripcion" [(ngModel)]="insumos_consumibles.descripcion" name="descripcion" class="p-inputtext" required/>
+    <label for="descripcion">Descripción</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="unidad_medida" [(ngModel)]="insumos_consumibles.unidad_medida" name="unidad_medida" class="p-inputtext" required/>
+    <label for="unidad_medida">Unidad de Medida</label>
+  </p-floatLabel>
+  <p-floatLabel>
+    <input pInputText id="cantidad" [(ngModel)]="insumos_consumibles.cantidad" name="cantidad" class="p-inputtext" required/>
+    <label for="cantidad">Camtidad</label>
+  </p-floatLabel>
+</div>
+<div class="card flex justify-content-center container margin-top">
+  <p-button class="open-modal-btn" (click)="openModal()">Agregar Insumo Consumible</p-button>
+</div>
+
+<!-- Modal manual -->
+<div id="manualModal" class="modal">
+  <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Confirmación</h2>
+      <p>¿Esta seguro de que desea agregar el insumo consumible?</p>
+      <div class="modal-buttons">
+          <button class="confirm-btn" (click)="confirmSubmit()">Confirmar</button>
+          <button class="cancel-btn" (click)="closeModal()">Cancelar</button>
+      </div>
+  </div>
+</div>
