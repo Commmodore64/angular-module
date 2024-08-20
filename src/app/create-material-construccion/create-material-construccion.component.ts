@@ -124,7 +124,7 @@ export class CreateMaterialConstruccionComponent {
         });
         break;
       case 'herramienta':
-        this.dataService.postHerramientaData(this.equipoMenor).subscribe({
+        this.dataService.postHerramientaData(this.herramienta).subscribe({
           next: (response) => {
             console.log('Herramienta data posted successfully:', response);
             this.fetchData();

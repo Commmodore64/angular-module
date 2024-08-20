@@ -164,7 +164,7 @@ export class PrincipalComponent {
           }
         });
         break;
-      case 'heramienta':
+      case 'herramienta':
         this.dataService.deleteHerramientaData(item.id).subscribe({
           next: (response) => {
             console.log('Herramienta data deleted successfully:', response);

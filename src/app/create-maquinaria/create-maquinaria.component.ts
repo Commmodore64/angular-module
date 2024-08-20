@@ -69,6 +69,17 @@ export class CreateMaquinariaComponent {
           },
         });
         break;
+      case 'herramienta':
+        this.dataService.getHerramientaData().subscribe({
+          next: (data) => {
+            console.log('Herramienta data fetched:', data);
+            this.data = data;
+          },
+          error: (error) => {
+            console.error('Error fetching data:', error);
+          },
+        });
+        break;
       default:
         this.data = [];
         break;
@@ -119,6 +130,17 @@ export class CreateMaquinariaComponent {
         this.dataService.deleteEquipoMenorData(item.id).subscribe({
           next: (response) => {
             console.log('Equipo Menor data deleted successfully:', response);
+            this.fetchData();
+          },
+          error: (error) => {
+            console.error('Error deleting data:', error);
+          },
+        });
+        break;
+      case 'herramienta':
+        this.dataService.deleteHerramientaData(item.id).subscribe({
+          next: (response) => {
+            console.log('Herramienta data deleted successfully:', response);
             this.fetchData();
           },
           error: (error) => {
